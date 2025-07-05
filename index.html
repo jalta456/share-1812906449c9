@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعلان هام | جمعية تغرراط للماء والبيئة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Desert Harmony -->
+    <!-- Application Structure Plan: تم تصميم التطبيق ليكون بمثابة لوحة إعلانات تفاعلية، وليس تقريراً معقداً. يبدأ بعنوان بارز وشعار للجمعية لترسيخ المصداقية. يتبع ذلك عرض موجز للمشكلة والحل. الجزء المركزي هو قسم "الإجراءات المطلوبة" الذي يحتوي على عداد تنازلي للموعد النهائي لإضفاء طابع الإلحاح، مع عرض التكاليف والشروط بشكل واضح. تم تقسيم المحتوى إلى بطاقات لتسهيل القراءة السريعة على الهاتف المحمول. يهدف هذا الهيكل إلى توجيه المستخدم من فهم المشكلة إلى اتخاذ إجراء فوري. -->
+    <!-- Visualization & Content Choices: 
+        - الإعلان الرئيسي: Goal: Inform/Call to Action -> Viz/Method: بطاقات معلومات منظمة بـ HTML/CSS وأيقونات (رموز يونيكود) -> Interaction: تأثيرات عند التمرير + عداد تنازلي -> Justification: تقسيم النص الطويل إلى أجزاء قابلة للاستيعاب بصرياً. العداد التنازلي هو العنصر التفاعلي الأهم لإظهار الإلحاح. -> Library/Method: Vanilla JS, Tailwind CSS.
+        - الأرقام الهامة (300 درهم، 15 يوماً): Goal: Highlight Data -> Viz/Method: عرض الأرقام بخط كبير وواضح في بطاقات إحصائية -> Interaction: لا يوجد -> Justification: جذب الانتباه الفوري للمعلومات الأساسية التي يحتاجها المستخدم لاتخاذ قرار. -> Library/Method: HTML/Tailwind CSS.
+        - الشروط والخطوات: Goal: Explain Process -> Viz/Method: عرض مرئي للخطوات باستخدام Flexbox مرقمة -> Interaction: تأثيرات عند التمرير -> Justification: العملية المرئية أسهل للفهم من شرحها في فقرة نصية. -> Library/Method: HTML/Tailwind CSS.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #FFF8F0; /* Warm neutral background */
+        }
+        .main-title {
+            color: #C05621; /* Darker Orange for main titles */
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .btn-primary {
+            background-color: #DD6B20; /* Primary orange */
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #C05621; /* Darker orange on hover */
+        }
+        .countdown-box {
+            background-color: #FEEBC8; /* Light orange background for countdown */
+            border: 1px solid #FBD38D;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+        .countdown-number {
+            font-size: 2.25rem;
+            font-weight: 700;
+            line-height: 1;
+            color: #DD6B20;
+        }
+        .countdown-label {
+            font-size: 0.875rem;
+            color: #718096;
+            margin-top: 0.25rem;
+        }
+        .icon {
+            font-size: 2.5rem;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            color: #DD6B20;
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <div class="inline-block p-4 bg-orange-600 text-white rounded-full mb-2">
+                <span class="text-4xl">💧</span>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold main-title">جمعية تغرراط للماء والبيئة</h1>
+            <p class="text-gray-500 mt-1">معاً من أجل ضمان الماء للجميع</p>
+        </header>
+
+        <!-- Main Announcement Section -->
+        <section class="mb-10">
+            <div class="card p-6 md:p-8 border-t-4 border-orange-500">
+                <h2 class="text-2xl font-bold mb-4 text-center">إعلان هام وعاجل لجميع سكان دوار تغرراط</h2>
+                <p class="text-lg text-center text-gray-600 leading-relaxed">
+                    هذا القسم يقدم لكم ملخصاً للوضع الحالي والإجراءات التي اتخذتها الجمعية لمواجهة أزمة المياه. الهدف هو توضيح السياق العام قبل الدخول في التفاصيل والخطوات المطلوبة منكم.
+                </p>
+                <div class="grid md:grid-cols-2 gap-6 mt-8 text-center">
+                    <div class="card p-5">
+                        <div class="icon">⚠️</div>
+                        <h3 class="text-xl font-semibold mb-2">المشكلة: أزمة مياه</h3>
+                        <p class="text-gray-600">يعاني دوارنا حالياً من أزمة حادة في توفر المياه، مما يستدعي تحركاً عاجلاً من الجميع.</p>
+                    </div>
+                    <div class="card p-5">
+                        <div class="icon">✅</div>
+                        <h3 class="text-xl font-semibold mb-2">الحل: تفعيل الاتفاقية</h3>
+                        <p class="text-gray-600">باشرت الجمعية إجراءات تفعيل الاتفاقية مع شركة التوزيع سوس ماسة لضمان تزويد كل منزل بالماء الصالح للشرب.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action & Countdown Section -->
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-center mb-2 main-title">الإجراءات المطلوبة بشكل عاجل</h2>
+            <p class="text-lg text-center text-gray-600 mb-6 leading-relaxed">
+                لضمان نجاح هذا المشروع الحيوي، يجب على كل منخرط القيام بالخطوات التالية قبل فوات الأوان. يوضح العداد التنازلي أدناه الوقت المتبقي لإنهاء الإجراءات الضرورية.
+            </p>
+            <div class="card p-6 md:p-8">
+                <h3 class="text-xl font-bold mb-4 text-center">آخر أجل لأداء المستحقات</h3>
+                <div id="countdown" class="grid grid-cols-4 gap-2 md:gap-4 max-w-md mx-auto mb-6">
+                    <div class="countdown-box"><div id="days" class="countdown-number">0</div><div class="countdown-label">أيام</div></div>
+                    <div class="countdown-box"><div id="hours" class="countdown-number">0</div><div class="countdown-label">ساعات</div></div>
+                    <div class="countdown-box"><div id="minutes" class="countdown-number">0</div><div class="countdown-label">دقائق</div></div>
+                    <div class="countdown-box"><div id="seconds" class="countdown-number">0</div><div class="countdown-label">ثواني</div></div>
+                </div>
+                
+                <div class="border-t pt-6">
+                    <h3 class="text-xl font-bold mb-4">الخطوات المطلوبة:</h3>
+                    <ol class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="flex items-center justify-center w-8 h-8 bg-orange-500 text-white font-bold rounded-full mr-4 ml-2 flex-shrink-0">1</span>
+                            <div>
+                                <h4 class="font-semibold">تسوية الوضعية المالية</h4>
+                                <p class="text-gray-600">أداء جميع المتأخرات وواجب الاشتراك السنوي. هذا شرط أساسي لقبول ملفكم لدى الشركة.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                             <span class="flex items-center justify-center w-8 h-8 bg-orange-500 text-white font-bold rounded-full mr-4 ml-2 flex-shrink-0">2</span>
+                            <div>
+                                <h4 class="font-semibold">أداء ثمن العداد</h4>
+                                <p class="text-gray-600">تحويل مبلغ <strong class="text-orange-600">300 درهم</strong> إلى الحساب البنكي للجمعية.</p>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                
+                <div class="mt-6 p-4 bg-orange-100 border-r-4 border-orange-500 rounded">
+                     <h4 class="font-bold">تفاصيل الحساب البنكي:</h4>
+                     <p class="text-gray-700">المرجو تحويل المبلغ إلى الحساب التالي:</p>
+                     <p class="mt-2 font-mono text-gray-800 bg-gray-200 p-2 rounded">
+                        <strong>اسم البنك:</strong> البنك الشعبي<br>
+                        <strong>رقم الحساب:</strong> 101765212115181352000576
+                     </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Warning Section -->
+        <section>
+             <h2 class="text-2xl font-bold text-center mb-2 main-title">تنبيهات هامة جداً</h2>
+             <p class="text-lg text-center text-gray-600 mb-6 leading-relaxed">
+                نرجو من الجميع أخذ النقاط التالية بعين الاعتبار لتجنب أي مشاكل مستقبلية وضمان استفادتكم من المشروع بأقل تكلفة ممكنة.
+            </p>
+            <div class="space-y-4">
+                 <div class="card p-5 flex items-start">
+                    <div class="icon mr-4 ml-2">💸</div>
+                    <div>
+                        <h3 class="font-semibold text-lg">تكلفة مستقبلية أعلى</h3>
+                        <p class="text-gray-600">نود التذكير بأن أي طلبات للتزود بالماء بعد انطلاق المشروع قد تصل تكلفتها لمبلغ أكبر بكثير.</p>
+                    </div>
+                </div>
+                <div class="card p-5 flex items-start bg-red-50 border-red-200">
+                    <div class="icon mr-4 ml-2 text-red-500">⚖️</div>
+                    <div>
+                        <h3 class="font-semibold text-lg text-red-700">إخلاء المسؤولية</h3>
+                        <p class="text-red-600">بعد نهاية الأجل المحدد، تعفي الجمعية نفسها من أية مسؤولية أو نتائج تنتج عن إهمال الاستجابة لمقتضيات هذا الإعلان الهام.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center mt-12 pt-6 border-t">
+            <p class="text-gray-600">نشكركم على حسن تعاونكم وتفهمكم.</p>
+            <p class="text-sm text-gray-400 mt-2">&copy; 2024 جمعية تغرراط للماء والبيئة</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const deadline = new Date('2025-07-20T23:59:59'); // تم تحديث آخر أجل إلى 20 يوليو 2025
+
+            function updateTimer() {
+                const now = new Date().getTime();
+                const distance = deadline - now;
+
+                if (distance < 0) {
+                    document.getElementById('countdown').innerHTML = "<div class='col-span-4 text-center text-red-500 font-bold text-lg'>انتهى الوقت المحدد!</div>";
+                    clearInterval(timerInterval);
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = days;
+                document.getElementById('hours').innerText = hours;
+                document.getElementById('minutes').innerText = minutes;
+                document.getElementById('seconds').innerText = seconds;
+            }
+
+            const timerInterval = setInterval(updateTimer, 1000);
+            updateTimer(); 
+        });
+    </script>
+</body>
+</html>
