@@ -146,7 +146,7 @@
                      <p class="text-gray-700">المرجو تحويل المبلغ إلى الحساب التالي:</p>
                      <p class="mt-2 font-mono text-gray-800 bg-gray-200 p-2 rounded">
                         <strong>اسم البنك:</strong> البنك الشعبي<br>
-                        <strong>رقم الحساب:</strong> 101765212115181352000576
+                        <strong>رقم الحساب:</strong> 765181352000521211765101
                      </p>
                 </div>
             </div>
@@ -186,7 +186,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const deadline = new Date('2025-07-20T23:59:59'); // تم تحديث آخر أجل إلى 20 يوليو 2025
+            const deadline = new Date(); // Current date
+            deadline.setDate(deadline.getDate() + 15); // Add 15 days to the current date
 
             function updateTimer() {
                 const now = new Date().getTime();
